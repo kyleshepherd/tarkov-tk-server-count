@@ -10,8 +10,9 @@ const AppName = "tarkov-tk-server-count"
 
 // Config stores configuration options set by configuration file or env vars
 type Config struct {
-	Log     Log
-	Discord Discord
+	Log      Log
+	Discord  Discord
+	BotToken string
 }
 
 // Log contains logging configuration
@@ -27,16 +28,18 @@ type Discord struct {
 
 // Default is a default configuration setup with sane defaults
 var Default = Config{
-	Log{
+	Log: Log{
 		Level: zerolog.InfoLevel.String(),
 	},
-	Discord{},
+	Discord:  Discord{},
+	BotToken: "",
 }
 
 // New constructs a new Config instance
 func New(opts ...config.Option) (Config, error) {
 	c := Default
-	v := config.ViperWithDefaults("tarkov-tk-server-count")
+	v := config.ViperWithDefaults("ttsc")
+	v.AutomaticEnv()
 	err := config.ReadInConfig(v, &c, opts...)
 	if err != nil {
 		return c, err

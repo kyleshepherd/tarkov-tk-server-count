@@ -3,7 +3,6 @@ package api
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"time"
 
@@ -22,8 +21,6 @@ func NewAPI(ctx context.Context, discord *discordgo.Session) *API {
 	api := &API{
 		Discord: discord,
 	}
-
-	fmt.Printf("%d", len(api.Discord.State.Guilds))
 
 	router := mux.NewRouter()
 
