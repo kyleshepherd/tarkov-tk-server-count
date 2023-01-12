@@ -10,7 +10,8 @@ const AppName = "tarkov-tk-server-count"
 
 // Config stores configuration options set by configuration file or env vars
 type Config struct {
-	Log Log
+	Log     Log
+	Discord Discord
 }
 
 // Log contains logging configuration
@@ -20,11 +21,16 @@ type Log struct {
 	Level   string
 }
 
+type Discord struct {
+	BotToken string
+}
+
 // Default is a default configuration setup with sane defaults
 var Default = Config{
 	Log{
 		Level: zerolog.InfoLevel.String(),
 	},
+	Discord{},
 }
 
 // New constructs a new Config instance

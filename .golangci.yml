@@ -15,6 +15,7 @@ linters:
     - scopelint
     - maligned
     - gci
+    - funlen
   presets:
     - bugs # asciicheck, bidichk, bodyclose, contextcheck, durationcheck, errcheck, errchkjson, errorlint, exhaustive, exportloopref, gosec, govet, makezero, nilerr, noctx, rowserrcheck, scopelint, sqlclosecheck, staticcheck, typecheck
     - complexity # cyclop, funlen, gocognit, gocyclo, maintidx, nestif
@@ -25,8 +26,6 @@ linters:
 
 # configuration for specific linters
 linters-settings:
-  funlen:
-    lines: 80
   cyclop:
     max-complexity: 12
     skip-tests: true
@@ -35,7 +34,7 @@ linters-settings:
   goimports:
     # put imports beginning with prefix after 3rd-party packages;
     # it's a comma-separated list of prefixes
-    local-prefixes: github.com/kyleshepherd/tarkov-tk-server-count
+    local-prefixes: go.soon.build/ecom.shopify-email-syncer
   depguard:
     list-type: blacklist
     include-go-root: false
@@ -50,3 +49,4 @@ issues:
       linters:
         - funlen
         - gocyclo
+        - maintidx

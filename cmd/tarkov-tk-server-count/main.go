@@ -68,6 +68,7 @@ func tarkovtkservercountCmd() *cobra.Command {
 	pflags.BoolP("verbose", "v", false, "verbose logging")
 	// Add sub commands
 	cmd.AddCommand(versionCmd())
+	cmd.AddCommand(serveCmd())
 	return cmd
 }
 
